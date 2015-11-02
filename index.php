@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) { // Form has been submitted.
         $_SESSION['taskforce'] = $found_task->tfid;
         redirect_to("dashboard.php");
     } else {
-        $message = "Username/password combination incorrect.";
+        $message = "Incorrect Username/Password.";
         flashMessage($message, 'error');
     }
 }

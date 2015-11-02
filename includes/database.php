@@ -146,5 +146,3 @@ $this->connection = mysqli_connect("50.62.209.85", "jardiance", "jardiance@123")
 
 $database = new MySQLDatabase();
 $db = & $database;
-?>
-
