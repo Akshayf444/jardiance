@@ -260,7 +260,7 @@ $top_zsm = bdm::top_zsm();
         </div>
        	<div class="bottm" style="position:fixed; bottom:0; width:100%; z-index:10">
             <marquee direction="left" behavior="scroll" scrollamount="1" style=" width:100%; float:left; clear:both; padding:5px; color:#CCC; z-index:10; background-color:#333;"> iopajdfjdfajsdfoipjafoiaiadjfoipjfoiajfoiajfoijiofjoifjiaopdfjo</marquee>
-            <div class="diclaimer" style="width:100%; loat:left; clear:both; padding:4px; color:#000; background-color:#999; z-index:50;">This information is confidential. It may also be privileged or otherwise protected by work product immunity or other legal rules. The final winner would be declared by the management after scrutiny.</div>
+            <div class="diclaimer" style="width:100%; loat:left; clear:both; padding:4px; color:#000; background-color:#999; z-index:50;">Toppers displaying are as per the count received by BDM/TF, Actual winner will be declared after verification</div>
 
 
         </div>
