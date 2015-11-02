@@ -53,76 +53,39 @@ $top_zsm = bdm::top_zsm();
                         <div class="sl-slide-inner">
                             <h2>Total Rx and POB Generated in Each Zone</h2>
                             <blockquote>
-                                <!--<table width="96%" border="1" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="9%" align="left" valign="middle">&nbsp;</td>
-        <td width="30%"><h3>First Zone</h3></td>
-        <td width="17%"><h3>Second Zone</h3></td>
-        <td width="14%"><h3>Third Zone</h3></td>
-        <td width="16%"><h3>Fourth Zone</h3></td>
-        <td width="14%"><h3>Fifth Zone</h3></td>
-      </tr>
-      <tr>
-        <td align="right" valign="middle"><h4>No. of Rx Generated</h4></td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-      </tr>
-      <tr>
-        <td align="right" valign="middle"><h4>No. of Rx Generated</h4></td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td align="left" valign="middle">&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-    </table>-->
-                                <table width="29%" cellspacing="0" cellpadding="0" class="pob">
-                                    <?php
-                                    if (!empty($rx) && !empty($pob)) {
-                                        foreach ($rx as $RXS) {
-                                            $RXS = array_pop($rx);
-                                            ?>
+                                <?php
+                                if (!empty($rx) && !empty($pob)) {
+                                    foreach ($rx as $RXS) {
+                                        $RXS = array_pop($rx);
+                                        ?>
 
-                                            <table width="29%" cellspacing="0" cellpadding="0" class="pob">
-                                                <tr>
-                                                    <td colspan="2" bgcolor="#fdd84c"><h3><?php echo $RXS->zone; ?></h3></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" valign="middle"><h4>No. of Rx Generated</h4></td>
-                                                    <td align="left" valign="middle"><?php echo $RXS->sum_rx; ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" valign="middle"><h4>No. of  Prescriber</h4></td>
-                                                    <td align="left" valign="middle"><?php echo $RXS->prescriber; ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" valign="middle"><h4>No. of POB Generated</h4></td>
-                                                    <td align="left" valign="middle"><?php
-                                                        foreach ($pob as $POBS) {
-                                                            echo $POBS->s;
-                                                            break;
-                                                        }
-                                                        ?></td>
-                                                </tr>
-
-                                                <?php
-                                            }
-                                        }
-                                        ?>				
-                                    </table>
-
-
+                                        <table width="29%" cellspacing="0" cellpadding="0" class="pob">
+                                            <tr>
+                                                <td colspan="2" bgcolor="#fdd84c"><h3><?php echo $RXS->zone; ?></h3></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="middle"><h4>Rx Generated</h4></td>
+                                                <td align="left" valign="middle"><?php echo $RXS->sum_rx; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="middle"><h4>No. of  Prescriber</h4></td>
+                                                <td align="left" valign="middle"><?php echo $RXS->prescriber; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="middle"><h4>POB Generated</h4></td>
+                                                <td align="left" valign="middle"><?php
+                                                    foreach ($pob as $POBS) {
+                                                        echo $POBS->s;
+                                                        break;
+                                                    }
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <?php
+                                    }
+                                }
+                                ?>				
                             </blockquote>
                         </div>
                     </div>
