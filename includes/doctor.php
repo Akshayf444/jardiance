@@ -1,7 +1,7 @@
 <?php
 class doctor extends Table {
 
-    protected $table_name = "doctors";
+    protected $table_name = "doctor";
 
 public static function  find_by_bdm($bdm_id){
          $sql="select doctor.*,SUM(rx_save .rx) as sum from doctor left join rx_save on doctor.doc_id=rx_save.doc_id where doctor.bdm_id='$bdm_id' and doctor.status='0'group by doctor.doc_id";

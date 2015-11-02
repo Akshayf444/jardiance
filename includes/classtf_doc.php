@@ -11,7 +11,7 @@ class tf_doc extends Table {
          return !empty($result_array)? array_shift($result_array):FALSE;
     }
     public static function  list_doctor($tf_id){
-        $sql="SELECT doctor.* FROM tf_doc LEFT JOIN doctor ON  tf_doc.doc_id=doctor.doc_id WHERE tf_doc.tf_id='$tf_id' ";
+        $sql="SELECT doctor.* FROM tf_doc INNER JOIN doctor ON  tf_doc.doc_id=doctor.doc_id WHERE tf_doc.tf_id='$tf_id' ";
         return Query::executeQuery($sql);
         
     }

@@ -1,10 +1,25 @@
 <?php
 require_once("./includes/initialize.php");
 session_start();
-$tf_id = $_SESSION['taskforce']; 
-$doctor= tf_doc::list_doctor($tf_id);
+$tf_id = $_SESSION['taskforce'];
+$doctor = tf_doc::list_doctor($tf_id);
+if (isset($_GET['delete_doc'])) {
+    $field_array = array('doc_id' => $_GET['delete_doc']);
+//    $field_array = array('id' => $id);
+    $del_doc = new doctor();
+    $del_doc->delete($field_array, 'tf_doc');
+
+    flashMessage(' Deleted Successfully.', 'Success');
+}
 require_once './header.php';
 ?>
+<?php
+if (isset($_SESSION['message'])) {
+    echo $_SESSION['message'];
+    unset($_SESSION['message']);
+}
+?>
+
 <style>
     .bgc-fff {
         background-color: #9DC7E0!important;
@@ -48,44 +63,49 @@ require_once './header.php';
 
 <div class="container-fluid" >
     <div class="row">
-        <?php
-        if (!empty($doctor)) {
-            foreach ($doctor as $doctors) {
-                ?>
+<?php
+if (!empty($doctor)) {
+    foreach ($doctor as $doctors) {
+        ?>
 
-        <a href="tf_addrx.php?docid=<?php echo $doctors->doc_id    ?>">
-                <div class="col-xs-6" style="padding-right: 0px"> 
-                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-10 property-listing">
-                        <div class="media">
-                            <div class="row">
-                                <div class="col-lg-12" style="padding-right: 5px ">
-                                    <b>
-                                        <?php echo $doctors->doc_name; ?>
-                                        <small> </small>
-                                    </b>
-                                    <div class="row row-margin-top" >
+                <a href="tf_addrx.php?docid=<?php echo $doctors->doc_id ?>">
+                    <div class="col-xs-6" style="padding-right: 0px"> 
+                        <div class="brdr bgc-fff pad-10 box-shad btm-mrg-10 property-listing">
+                            <div class="media">
 
-                                        <div class="col-lg-12" >
-                                            <b>Specialty : </b><?php echo $doctors->speciality; ?>
+                                <div class="row">
+                                    <div class="col-lg-12" style="padding-right: 5px ">
+                                        <b>
+        <?php echo $doctors->doc_name; ?>
+                                            <small> </small>
+                                        </b>
+                                        <div class="row row-margin-top" >
+
+                                            <div class="col-lg-12" >
+                                                <b>Specialty : </b><?php echo $doctors->speciality; ?>
+
+                                            </div>
+                                            <div class="col-lg-12" >
+                                                <b>Class : </b><?php echo $doctors->segment; ?>
+                                                 <div class="col-lg-1 pull-right" >
+                                                <a class="btn btn-xs btn-danger "  href="tf_view.php?delete_doc=<?php echo $doctors->doc_id ?>">
+
+                                                    <i class="fa fa-trash-o pull-right" ></i></a> 
+                                           </div>
+                                        </div>
+
 
                                         </div>
-                                        <div class="col-lg-12" >
-                                            <b>Class : </b><?php echo $doctors->segment; ?>
-
-                                        </div>
-
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-      </a>
-            <?php }
-        } ?>
-      
+                </a>
+    <?php }
+}
+?>
+
     </div>
 
 </div>

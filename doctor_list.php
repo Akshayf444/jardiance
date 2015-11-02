@@ -16,6 +16,7 @@ if (isset($_POST['sub'])) {
         }
     }
 }
+
 require_once './header.php';
 ?>
 <style>
@@ -90,7 +91,7 @@ if (isset($_SESSION['message'])) {
                                                 <small> </small>
                                             </b>
                                             <div class="row row-margin-top" >
-
+                                           
                                                 <div class="col-lg-12" >
                                                     <b>Specialty : </b><?php echo $doctors->speciality; ?>
 

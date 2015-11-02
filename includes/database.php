@@ -99,6 +99,7 @@ $this->connection = mysqli_connect("50.62.209.85", "jardiance", "jardiance@123")
         $sql .= ") VALUES ('";
         $sql .= join("', '", array_values($attributes));
         $sql .= "')";
+     
         if ($this->query($sql)) {
             return $this->insert_id();
         } else {

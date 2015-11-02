@@ -25,7 +25,7 @@ if (!empty( $total)) {
 <div class="row">
 <div class= "col-lg-12 "><b> Last  Entered  POB Value</b>
 
-<?php echo $last->pob;?>
+<?php if (!empty( $last)) {echo $last->pob;}?>
 
 </div>
 </div>
