@@ -8,16 +8,15 @@ require_once("./includes/initialize.php");
 if (isset($_POST['sub'])) {
     $error = array();
     $docname = $_POST['docname'];
-    $segment = $_POST['segment'];
+   
     $specialty = $_POST['specialty'];
     if (empty($_POST['docname'])) {
        $docnameErr = 'required';
-    } elseif (empty($_POST['segment'])) {
-         $segmentErr = 'required';
+    
     } elseif (empty($_POST['specialty'])) {
          $specialtytErr = 'required';
     } else {
-        $field_array = array('doc_name' => $_POST['docname'], 'segment' => $_POST['segment'], 'speciality' => $_POST['specialty'], 'bdm_id' => $bdm, 'created_at' => date('y-m-d'));
+        $field_array = array('doc_name' => $_POST['docname'],  'speciality' => $_POST['specialty'], 'bdm_id' => $bdm, 'created_at' => date('y-m-d'));
         $add = new doctor();
         $add->create($field_array);
         flashMessage('Added Successfully', 'success');
@@ -49,19 +48,7 @@ if (isset($_SESSION['message'])) {
                      
                             ?>
                         </div>
-                        <div class="form-group">
-                            <select name="segment" class="form-control" required="">
-                                <option> Select Segment</option>
-                                <option>A</option>
-                                <option>B+</option>
-                                <option>B</option>
-                                <option>C</option>
-                            </select> 
-                              <?php
-                            echo $segmentErr;
-                      
-                            ?>
-                        </div>
+                        
 
                         <div class="form-group">
                             <input type="text" class="form-control" name="specialty" placeholder="Specialty " required="">

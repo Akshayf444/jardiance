@@ -1,8 +1,15 @@
 <?php
 session_start();
 $bdm = $_SESSION['bdm'];
+$zone = $_SESSION['bdmzone'];
+$emp = $_SESSION['bdmemp'];
 require_once("./includes/initialize.php");
-$id = $_GET['docid'];
+if (isset($_GET['docid'])) {
+    $id = $_GET['docid'];
+}  else {
+    redirect_to('Doctors.php');
+}
+
 $type = 'bdm';
 $doctor = doctor::find_by_doc_id($id);
 $exit = rx::exit_record($id, $bdm, $type);
@@ -16,6 +23,7 @@ if (isset($_POST['save'])) {
     $rx = $_POST['rx'];
     $strips = $_POST['strips'];
     $chemist = $_POST['chemist'];
+
     if (empty($_POST['rx'])) {
         $rxErr = 'required';
     } elseif (empty($_POST['strips'])) {
@@ -27,11 +35,13 @@ if (isset($_POST['save'])) {
     } else if (!is_numeric($_POST['strips'])) {
         $msg2 = '<span class="error"> Data entered was not numeric</span>';
     } else {
-        $field_array = array('rx' => $_POST['rx'], 'bdm_id' => $bdm, 'type' => 'bdm', 'strips' => $_POST['strips'], 'cheimst' => $_POST['chemist'], 'doc_id' => $id, 'created_at' => date('Y:m:d '));
-        $rx = new rx();
-        $rx->create($field_array);
-        flashMessage('Added Successfully', 'success');
-        ;
+        if (isset($bdm) && $bdm > 0) {
+            $field_array = array('rx' => $_POST['rx'], 'zone' => $zone, 'bdm_id' => $bdm, 'type' => 'bdm', 'strips' => $_POST['strips'], 'cheimst' => $_POST['chemist'], 'doc_id' => $id, 'created_at' => date('Y:m:d '));
+            $rx = new rx();
+            $rx->create($field_array);
+            flashMessage('Added Successfully', 'success');
+            redirect_to('doctor_details.php?docid='. $id);
+        }
     }
 }
 
@@ -40,10 +50,10 @@ require_once './header.php';
 ?>
 <style>
     .alert-danger {
-    background-color: #C33838;
-    border-color: #ebccd1;
-    color: #FFFFFF;
-}
+        background-color: #C33838;
+        border-color: #ebccd1;
+        color: #FFFFFF;
+    }
 </style>
 <?php
 if (isset($_SESSION['message'])) {
@@ -89,8 +99,9 @@ if (!empty($doctor)) {
                                     ?>
                                 </div>
                                 <div class="form-group">
-                                    <?php if (!empty($exit)) {
-                                        //flashMessage('Already Submitted For The Day ', 'error');
+                                    <?php
+                                    if (!empty($exit)) {
+                                        flashMessage('Already Submitted For The Day ', 'error');
                                         ?>
                                     <?php } else {
                                         ?>

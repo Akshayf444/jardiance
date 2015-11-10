@@ -2,6 +2,7 @@
 require_once("./includes/initialize.php");
 session_start();
 $tf_id = $_SESSION['taskforce'];
+$emp= $_SESSION['tfemp'];
 $bdm_id = $_GET['bdm'];
 $doctor = doctor::list_doctor($bdm_id);
 
@@ -9,7 +10,7 @@ if (isset($_POST['sub'])) {
     for ($i = 0; $i < count($_POST['docid']); $i++) {
         $exitrecord = tf_doc::find_by_id($_POST['docid'][$i], $tf_id);
         if (empty($exitrecord)) {
-            $field_array = array('doc_id' => $_POST['docid'][$i], 'tf_id' => $tf_id, 'created_at' => date('Y:m:d H:i:s'));
+            $field_array = array('doc_id' => $_POST['docid'][$i], 'tf_id' => $tf_id, 'created_at' => date('Y:m:d H:i:s'),'emp_id'=>$emp);
             $tf_doc = new tf_doc();
             $tf_doc->create($field_array);
             flashMessage('Added Successfully', 'success');

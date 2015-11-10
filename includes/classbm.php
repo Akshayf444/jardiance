@@ -28,10 +28,12 @@ class bdm extends Table {
        
     public static function top_bdm() {
        $date=  date('Y-m-d');
-        $sql=  " SELECT bdm.bdm_name, bdm.HQ ,SUM(rx_save.rx) AS SUM FROM bdm 
- LEFT JOIN rx_save ON bdm.bdm_id=rx_save.bdm_id 
-WHERE rx_save.created_at='$date' and bdm.status='Active' 
-GROUP BY bdm.bdm_id ORDER BY SUM DESC LIMIT 5";
+        $sql=  "SELECT (CASE WHEN bdm.`bdm_name` IS NOT NULL THEN bdm.`bdm_name` ELSE tf.name END) AS NAMES,SUM(`rx_save`.`rx`) AS rx_count,
+(CASE WHEN bdm.`HQ` IS NOT NULL THEN bdm.`HQ` ELSE tf.hq END) AS HQ,rx_save.`type`
+ FROM rx_save
+LEFT JOIN bdm ON bdm.bdm_id=rx_save.bdm_id AND `rx_save`.`type`='bdm' 
+LEFT JOIN `task_force` tf ON tf.tfid = `rx_save`.`bdm_id` AND `rx_save`.`type` = 'tf' WHERE `rx_save`.`created_at` = ' $date' GROUP BY `rx_save`.`bdm_id` ORDER BY rx_count DESC LIMIT 5
+";
         return Query:: executeQuery($sql);
     }
   public static function top_asm() {
@@ -69,5 +71,13 @@ GROUP BY zsm.zsm_id ORDER BY SUM DESC LIMIT 1";
        
            return Query::executeQuery($sql);
     }
+     public static  function last_enteries(){
+         $sql="SELECT d.*,r.rx,r.created_at,r.rx,(CASE WHEN b.`bdm_name` IS NOT NULL THEN b.`bdm_name` ELSE tf.name END) AS NAME, 
+             (CASE WHEN b.`HQ` IS NOT NULL THEN b.`HQ` ELSE tf.HQ END) AS HQ ,r.bdm_id FROM `rx_save` r 
+             LEFT JOIN `doctor` d ON r.`doc_id` = d.`doc_id` LEFT JOIN `bdm` b ON r.`bdm_id` = b.`bdm_id` AND r.type='bdm' 
+             LEFT JOIN `task_force` tf ON r.`bdm_id` = tf.`tfid` AND r.type='tf' ORDER BY r.`id` DESC LIMIT 15
+  ";
+          return Query::executeQuery($sql);
+     }
    
 }

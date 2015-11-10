@@ -107,5 +107,10 @@ if(!isset($_SESSION['bdm'])){
                     echo 'Welcome,<br>';
                     echo $name;
                 }
+                 if (isset($_SESSION['taskforce'])) {
+                    $tfname = $_SESSION['tfname'];
+                    echo 'Welcome,<br>';
+                    echo $tfname;
+                }
                 ?></h4>
         </div>

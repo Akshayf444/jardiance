@@ -16,6 +16,8 @@ if (isset($_POST['submit'])) { // Form has been submitted.
 
         $_SESSION['bdm'] = $found_bdm->bdm_id;
         $_SESSION['bdmname'] = $found_bdm->bdm_name;
+         $_SESSION['bdmzone'] = $found_bdm->zone;
+            $_SESSION['bdmemp'] = $found_bdm->bdm_empid;
         redirect_to("dashboard.php");
     } elseif ($found_ho) {
 //        session_start();
@@ -24,6 +26,9 @@ if (isset($_POST['submit'])) { // Form has been submitted.
     } elseif ($found_task) {
 //       session_start();
         $_SESSION['taskforce'] = $found_task->tfid;
+         $_SESSION['tfname'] = $found_task->name;
+         $_SESSION['tfzone'] = $found_task->zone;
+              $_SESSION['tfemp'] = $found_task->empid;
         redirect_to("dashboard.php");
     } else {
         $message = "Incorrect Username/Password.";

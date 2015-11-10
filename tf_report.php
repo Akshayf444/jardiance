@@ -22,8 +22,9 @@ if (!empty($total)) {
     ?>
 </div>
 <div><b> Last  Entered  POB Value</b>
-
-<?php echo $last->pob; ?>
+    <?php
+if (!empty($last)) {?>
+<?php echo $last->pob; }?>
 
 </div>
 <div class="container-fluid" >

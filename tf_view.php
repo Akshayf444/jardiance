@@ -6,7 +6,7 @@ $doctor = tf_doc::list_doctor($tf_id);
 if (isset($_GET['delete_doc'])) {
     $field_array = array('doc_id' => $_GET['delete_doc']);
 //    $field_array = array('id' => $id);
-    $del_doc = new doctor();
+    $del_doc = new tf_doc();
     $del_doc->delete($field_array, 'tf_doc');
 
     flashMessage(' Deleted Successfully.', 'Success');
@@ -67,10 +67,10 @@ if (isset($_SESSION['message'])) {
 if (!empty($doctor)) {
     foreach ($doctor as $doctors) {
         ?>
-
-                <a href="tf_addrx.php?docid=<?php echo $doctors->doc_id ?>">
-                    <div class="col-xs-6" style="padding-right: 0px"> 
-                        <div class="brdr bgc-fff pad-10 box-shad btm-mrg-10 property-listing">
+ <div onclick="window.location = '<?php echo "tf_addrx.php"?>?docid=<?php echo $doctors->doc_id ?>'" class="col-xs-6" style="padding-right: 0px"> 
+                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-10 property-listing">
+               
+                    
                             <div class="media">
 
                                 <div class="row">
@@ -79,6 +79,11 @@ if (!empty($doctor)) {
         <?php echo $doctors->doc_name; ?>
                                             <small> </small>
                                         </b>
+                                          <div class="col-lg-1 pull-right" >
+                                                <a class="btn btn-xs btn-danger " onclick="return confirm('Are you sure you want to delete this tour?')"  href="tf_view.php?delete_doc=<?php echo $doctors->doc_id ?>">
+
+                                                    <i class="fa fa-trash-o pull-right" ></i></a> 
+                                           </div>
                                         <div class="row row-margin-top" >
 
                                             <div class="col-lg-12" >
@@ -87,11 +92,12 @@ if (!empty($doctor)) {
                                             </div>
                                             <div class="col-lg-12" >
                                                 <b>Class : </b><?php echo $doctors->segment; ?>
-                                                 <div class="col-lg-1 pull-right" >
-                                                <a class="btn btn-xs btn-danger "  href="tf_view.php?delete_doc=<?php echo $doctors->doc_id ?>">
-
-                                                    <i class="fa fa-trash-o pull-right" ></i></a> 
-                                           </div>
+                                                 <div class="col-sm-2 col-lg-1 col-md-2 pull-right" >
+                                                <span class="badge"><?php echo $doctors->rx_sum; ?></span>
+                                            </div>
+                                                
+                                                
+                                               
                                         </div>
 
 
@@ -111,3 +117,13 @@ if (!empty($doctor)) {
 </div>
 
 <?php require_once './footer.php'; ?>
+<script type="text/javascript">
+    function confirm() {
+
+        if(r == true) {
+            window.location='tf_view.php;
+        } else {
+            window.location='tf_view.php';
+        }
+    }
+    </script>

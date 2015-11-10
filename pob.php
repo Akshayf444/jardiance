@@ -1,4 +1,3 @@
-
 <?php
 require_once(dirname(__FILE__) . "/includes/initialize.php");
 session_start();
@@ -60,18 +59,18 @@ if (isset($_SESSION['message'])) {
 
 
 
-                            <input type="number" name="pob" class="form-control" placeholder="Value Of  POB Generated" required="">
+                            <input type="number" name="pob" class="form-control" placeholder="Value Of POB " required="">
                             <?php echo $pobErr;
                             echo $msg;
                             ?>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="chemist" class="form-control" placeholder="Traced At Chemist" required="">
+                            <input type="text" name="chemist" class="form-control" placeholder="No.Of Chemist Booked" required="">
                             <?php echo $chemistErr; ?>
                         </div>
 
                         <div class="form-group">
-                            <input type="number" class="form-control" name="strips" placeholder="Strips Sold At Above Chemist" required="">
+                            <input type="number" class="form-control" name="strips" placeholder="No.Of Strips Booked" required="">
                             <?php echo $stripsErr; 
                             echo $msg2;
                             ?>

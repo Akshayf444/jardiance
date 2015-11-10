@@ -1,7 +1,7 @@
 blockquote table{ margin:0 auto; border:1px solid #CCC;}
-blockquote table h3{ font-size:20px; font-weight:normal; color:#383435; padding-right:10px;}
-blockquote table h4{ font-weight:normal; font-size:16px; color:#000; padding-right:10px;}
-blockquote table td{ color:#068d7d; font-size:18px; padding:5px;}
+blockquote table h3{ font-size:20px; font-weight:bolder; color:#383435; padding-right:10px;}
+blockquote table h4{ font-weight:normal; font-size:16px; color:white; padding-right:10px;}
+blockquote table td{ color:white; font-size:18px; padding:5px;}
 blockquote h6{ font-size:50px; color:#F00;}
 blockquote h5{ font-size:25px; color:#F00; margin-top:15px;}
 .pob h3{ color:#383435;}
@@ -202,7 +202,7 @@ blockquote h5{ font-size:25px; color:#F00; margin-top:15px;}
 }
 
 .demo-1 .sl-slide h2 {
-	color: #068d7d;
+	color: #F1DA86;
 	padding: 20px;
 	position: absolute;
 	font-size: 40px;
@@ -268,18 +268,18 @@ blockquote h5{ font-size:25px; color:#F00; margin-top:15px;}
 /* First Slide */
 .demo-1 .bg-1 .sl-slide-inner,
 .demo-1 .bg-1 .sl-content-slice {
-	background: #fff;
+	background: #068D7D;
 }
 
 /* Second Slide */
 .demo-1 .bg-2 .sl-slide-inner,
 .demo-1 .bg-2 .sl-content-slice {
-	
+	background: #068D7D;
 }
 
 .demo-1 .bg-2 [data-icon]:after,
 .demo-1 .bg-2 h2 {
-	color: #068d7d;
+	color: #F1DA86;
 }
 
 .demo-1 .bg-2 blockquote:before {
@@ -289,7 +289,7 @@ blockquote h5{ font-size:25px; color:#F00; margin-top:15px;}
 /* Third Slide */
 .demo-1 .bg-3 .sl-slide-inner,
 .demo-1 .bg-3 .sl-content-slice {
-	
+	background: #068D7D;
 }
 
 .demo-1 .bg-3 .deco {
@@ -305,7 +305,7 @@ blockquote h5{ font-size:25px; color:#F00; margin-top:15px;}
 
 .demo-1 .bg-3 h2,
 .demo-1 .bg-3 blockquote{
-	
+	color:#F1DA86
 }
 
 .demo-1 .bg-3 blockquote:before {
@@ -315,7 +315,7 @@ blockquote h5{ font-size:25px; color:#F00; margin-top:15px;}
 /* Forth Slide */
 .demo-1 .bg-4 .sl-slide-inner,
 .demo-1 .bg-4 .sl-content-slice {
-	
+	background: #068D7D;
 }
 
 .demo-1 .bg-4 .deco {
@@ -339,7 +339,7 @@ blockquote h5{ font-size:25px; color:#F00; margin-top:15px;}
 /* Fifth Slide */
 .demo-1 .bg-5 .sl-slide-inner,
 .demo-1 .bg-5 .sl-content-slice {
-	
+	background: #068D7D;
 }
 
 .demo-1 .bg-5 .deco {
@@ -353,7 +353,7 @@ blockquote h5{ font-size:25px; color:#F00; margin-top:15px;}
 
 .demo-1 .bg-5 h2,
 .demo-1 .bg-5 blockquote{
-	
+	color:#F1DA86
 }
 
 .demo-1 .bg-5 blockquote:before {

@@ -2,6 +2,7 @@
 require_once("./includes/initialize.php");
   session_start();
 $bdm = $_SESSION['bdm'];
+
 $doctor= doctor::find_by_bdm($bdm);
 require_once './header.php'; 
 ?>
@@ -55,8 +56,7 @@ require_once './header.php';
             foreach ($doctor as $doctors) {
                 ?>
 
-  <a href="doctor_details.php?docid=<?php echo $doctors->doc_id    ?>">
-                <div class="col-xs-6" style="padding-right: 0px"> 
+                <div onclick="window.location = '<?php echo "doctor_details.php"?>?docid=<?php echo $doctors->doc_id ?>'" class="col-xs-6" style="padding-right: 0px"> 
                     <div class="brdr bgc-fff pad-10 box-shad btm-mrg-10 property-listing">
                         <div class="media">
                             <div class="row">
@@ -73,21 +73,17 @@ require_once './header.php';
                                         </div>
                                         <div class="col-lg-12" >
                                             <b>Class : </b><?php echo $doctors->segment; ?>
-                                            <div class="col-lg-1 pull-right" >
-                                                <?php echo $doctors->sum; ?>
-
+                                            <div class="col-sm-2 col-lg-1 col-md-2 pull-right" >
+                                                <span class="badge"><?php echo $doctors->rx_sum; ?></span>
                                             </div>
                                         </div>
-
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-      </a>
+
             <?php }
         } ?>
       

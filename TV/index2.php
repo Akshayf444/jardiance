@@ -15,6 +15,7 @@ $north = 0;
 $east = 0;
 $west = 0;
 
+
 $southname = 'South';
 $centralname = 'Central';
 $northname = 'North';
@@ -22,13 +23,12 @@ $eastname = 'East';
 $westname = 'West';
 $allindia='All India';
 
+
 $southDoctorCount = 0;
 $northDoctorCount = 0;
 $centralDoctorCount = 0;
 $eastDoctorCount = 0;
 $westDoctorCount = 0;
-
-
 
 foreach ($rx as $value) {
     if ($value->zone == 'East') {
@@ -55,11 +55,11 @@ foreach ($rx as $value) {
 }
 $allrx=$east+$south+$west+$north+$central;
 $allindiacount= $eastDoctorCount + $southDoctorCount+$westDoctorCount+$northDoctorCount+$centralDoctorCount;
+
 $pob = pob::live_pob();
 $top_bdm = bdm::top_bdm();
 $top_asm = bdm::top_asm();
 $top_zsm = bdm::top_zsm();
-$last=  bdm::last_enteries();
 // $total=array($pob,$rx);
 ?>
 
@@ -97,7 +97,7 @@ $last=  bdm::last_enteries();
 
                     <div class="sl-slide bg-1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
                         <div class="sl-slide-inner">
-                            <div class="deco"><img src="images/Jardiance Logo reverse2.png" width="500" height="205"></div>
+                            <div class="deco"><img src="images/Jardiance-Logo-ctc.png" width="500" height="205"></div>
 
                             <!--<blockquote><p>You have just dined, and however scrupulously the slaughterhouse is concealed in the graceful distance of miles, there is complicity.</p><cite>Ralph Waldo Emerson</cite></blockquote>-->
                         </div>
@@ -108,25 +108,7 @@ $last=  bdm::last_enteries();
                             <h2>Total Rx and POB Generated in Each Zone</h2>
                             <blockquote>
 
-<table width="29%" cellspacing="0" cellpadding="0" class="pob">
-                                    <tr>
-                                        <td colspan="2" bgcolor="#fdd84c"><h3><?php echo $allindia; ?></h3></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left" valign="middle"><h4>Rx Generated</h4></td>
-                                        <td align="left" valign="middle"><?php echo $allrx ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left" valign="middle"><h4>No. of  Prescriber</h4></td>
-                                        <td align="left" valign="middle"><?php echo $allindiacount ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left" valign="middle"><h4>POB Generated</h4></td>
-                                        <td align="left" valign="middle"><?php
-?>
-                                        </td>
-                                    </tr>
-                                </table>
+
                                 <table width="29%" cellspacing="0" cellpadding="0" class="pob">
                                     <tr>
                                         <td colspan="2" bgcolor="#fdd84c"><h3><?php echo $eastname; ?></h3></td>
@@ -202,27 +184,6 @@ $last=  bdm::last_enteries();
                                         </td>
                                     </tr>
                                 </table>
-                                   <table width="29%" cellspacing="0" cellpadding="0" class="pob">
-                                    <tr>
-                                        <td colspan="2" bgcolor="#fdd84c"><h3><?php echo $centralname; ?></h3></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left" valign="middle"><h4>Rx Generated</h4></td>
-                                        <td align="left" valign="middle"><?php echo $central ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left" valign="middle"><h4>No. of  Prescriber</h4></td>
-                                        <td align="left" valign="middle"><?php echo $centralDoctorCount ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left" valign="middle"><h4>POB Generated</h4></td>
-                                        <td align="left" valign="middle"><?php
-?>
-                                        </td>
-                                    </tr>
-                                </table>
-  </table>
-                                   
 
                             </blockquote>
                         </div>
@@ -239,10 +200,10 @@ $last=  bdm::last_enteries();
                                         <td  align="left"><h3>Territory</h3></td>
 
                                     </tr>
-                                    <?php
-                                    if (!empty($top_bdm)) {
-                                        foreach ($top_bdm as $tops) {
-                                            ?>
+<?php
+if (!empty($top_bdm)) {
+    foreach ($top_bdm as $tops) {
+        ?>
 
                                             <tr>
 
@@ -251,10 +212,10 @@ $last=  bdm::last_enteries();
                                             </tr>
 
 
-                                            <?php
-                                        }
-                                    }
-                                    ?>		
+        <?php
+    }
+}
+?>		
                                 </table>
                             </blockquote>
                         </div>
@@ -271,20 +232,20 @@ $last=  bdm::last_enteries();
                                         <td  align="left"><h3>Territory</h3></td>
                                         <td  align="left"><h3> Till Date Count</h3></td>
                                     </tr>
-                                    <?php
-                                    if (!empty($top_asm)) {
-                                        foreach ($top_asm as $tops_asm) {
-                                            ?>
+<?php
+if (!empty($top_asm)) {
+    foreach ($top_asm as $tops_asm) {
+        ?>
                                             <tr>
 
                                                 <td align="left" valign="middle"><?php echo $tops_asm->asm_name; ?></td>
                                                 <td align="left" valign="middle"><?php echo $tops_asm->HQ; ?></td>
                                                 <td align="left" valign="middle"><?php echo $tops_asm->totalsum; ?></td>
                                             </tr>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
+        <?php
+    }
+}
+?>
 
                                 </table>
 
@@ -303,9 +264,9 @@ $last=  bdm::last_enteries();
                                         <td align="left"><h3>Territory</h3></td>
 
                                     </tr>
-                                    <?php
-                                    if (!empty($top_zsm)) {
-                                        ?>
+<?php
+if (!empty($top_zsm)) {
+    ?>
                                         <tr>
 
                                             <td align="left" valign="middle"><?php echo $top_zsm->zsm_name; ?></td>
@@ -360,15 +321,7 @@ $last=  bdm::last_enteries();
             </div><!-- /slider-wrapper -->            
         </div>
        	<div class="bottm" style="position:fixed; bottom:0; width:100%; z-index:10">
-            <marquee direction="left" behavior="scroll" scrollamount="1" style=" width:100%; float:left; clear:both; padding:5px; color:#CCC; z-index:10; background-color:#333;">
-                <?php if(!empty($last)){
-                 
-                foreach($last as $lasts){?>
-                Name=<?php echo $lasts->NAME;?>
-               <?php echo $lasts->HQ;?>
-                RX=<?php echo $lasts->rx;?> <?php }
-                }?>
-            </marquee>
+            <marquee direction="left" behavior="scroll" scrollamount="1" style=" width:100%; float:left; clear:both; padding:5px; color:#CCC; z-index:10; background-color:#333;"> iopajdfjdfajsdfoipjafoiaiadjfoipjfoiajfoiajfoijiofjoifjiaopdfjo</marquee>
             <div class="diclaimer" style="width:100%; loat:left; clear:both; padding:4px; text-align: center; color:#000; background-color:#999; z-index:50;">Disclaimer:*Toppers displaying are as per the count received by BDM/TF, Actual winner will be declared after verification</div>
 
 
@@ -378,75 +331,75 @@ $last=  bdm::last_enteries();
         <script type="text/javascript" src="js/jquery.slitslider.js"></script>
         <script type="text/javascript">
             $(function () {
-
+                
                 var Page = (function () {
-
+                    
                     var $navArrows = $('#nav-arrows'),
                             $nav = $('#nav-dots > span'),
                             slitslider = $('#slider').slitslider({
                         onBeforeChange: function (slide, pos) {
-
+                            
                             $nav.removeClass('nav-dot-current');
                             $nav.eq(pos).addClass('nav-dot-current');
-
+                            
                         }
                     }),
                             init = function () {
-
+                                
                                 initEvents();
-
+                                
                             },
                             initEvents = function () {
-
+                                
                                 // add navigation events
                                 $navArrows.children(':last').on('click', function () {
-
+                                    
                                     slitslider.next();
                                     return false;
-
+                                    
                                 });
-
+                                
                                 $navArrows.children(':first').on('click', function () {
-
+                                    
                                     slitslider.previous();
                                     return false;
-
+                                    
                                 });
-
+                                
                                 $nav.each(function (i) {
-
+                                    
                                     $(this).on('click', function (event) {
-
+                                        
                                         var $dot = $(this);
-
+                                        
                                         if (!slitslider.isActive()) {
-
+                                            
                                             $nav.removeClass('nav-dot-current');
                                             $dot.addClass('nav-dot-current');
-
+                                            
                                         }
-
+                                        
                                         slitslider.jump(i + 1);
                                         return false;
-
+                                        
                                     });
-
+                                    
                                 });
-
+                                
                             };
-
+                    
                     return {init: init};
-
+                    
                 })();
-
+                
                 Page.init();
-
+                
                 /**
                  * Notes: 
                  * 
                  * example how to add items:
                  */
-
+                
                 /*
                  
                  var $items  = $('<div class="sl-slide sl-slide-color-2" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1"><div class="sl-slide-inner bg-1"><div class="sl-deco" data-icon="t"></div><h2>some text</h2><blockquote><p>bla bla</p><cite>Margi Clarke</cite></blockquote></div></div>');
@@ -455,7 +408,7 @@ $last=  bdm::last_enteries();
                  ss.add($items);
                  
                  */
-
+                
             });
         </script>
     </body>

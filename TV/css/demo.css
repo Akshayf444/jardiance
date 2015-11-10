@@ -51,8 +51,9 @@ a {
 }
 
 .container.demo-1 {
-	height: 100%;
+	 height: calc(100% - 66px);
 	position: absolute;
+	background: rgb(6, 141, 125) none repeat scroll 0% 0%;
 }
 
 .clr {

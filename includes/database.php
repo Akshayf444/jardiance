@@ -17,8 +17,8 @@ class MySQLDatabase {
     }
 
     public function open_connection() {        
-$this->connection = mysqli_connect("50.62.209.85", "jardiance", "jardiance@123");
-//        $this->connection = mysqli_connect("localhost", "root", "");
+//$this->connection = mysqli_connect("50.62.209.85", "jardiance", "jardiance@123");
+        $this->connection = mysqli_connect("localhost", "root", "");
         if (!$this->connection) {
             die("Database connection failed: ");
         } else {

@@ -135,7 +135,7 @@ if (isset($_SESSION['taskforce']) && $_SESSION['taskforce'] > 0) {
       </div>
       <div class="modal-body">
           
-          <p  style="text-align: center";> For Any Query Regarding The Campaign,Please Contact<b> 022-65657701</b></p>
+          <p  style="text-align: center";> For Any Query Regarding The Reporting,Please Contact<b> 022-65657701</b></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
